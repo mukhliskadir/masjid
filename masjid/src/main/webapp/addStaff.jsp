@@ -118,9 +118,10 @@ function calAlert() {
         // If both input fields are valid, show the confirmation dialog
         Swal.fire({
             title: 'Berjaya',
-            text: 'Pengumuman berjaya ditambah!',
+            text: 'Staff berjaya ditambah!',
             icon: 'success',
-         
+            showConfirmButton: false
+
         }).then((result) => {
             if (result.value) {
                 // If the user confirms, submit the form
