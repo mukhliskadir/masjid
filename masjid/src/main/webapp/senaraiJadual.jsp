@@ -45,7 +45,7 @@ using(topicid)
 
 
   		<div id="mybutton" class="button">
-  			<button class="add" type="add" value="add" onclick="location.href='addShedule.jsp'">TAMBAH</button>
+  			<button class="add" type="add" value="add" onclick="location.href='addSchedule.jsp'">TAMBAH</button>
   		</div>
 <form>
   <input type="date" id="myInput" placeholder="Pilih Tarikh"   onfocus="(this.type='date')" onblur="(this.type='text')">   
