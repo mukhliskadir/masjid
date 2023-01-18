@@ -98,7 +98,7 @@
 function calAlert() {
     // Check if the name input field is valid
     if (!document.getElementById("name").checkValidity()) {
-        alert("Sila masukkan name");
+        alert("Sila masukkan nama");
         return;
     }
     // Check if the phone number input field is valid
