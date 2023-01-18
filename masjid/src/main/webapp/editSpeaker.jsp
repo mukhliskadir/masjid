@@ -37,11 +37,11 @@
             <input type="hidden" name="id" value='${data.speakerid}'/>
             <div class="dataa">
                 <label>   Name </label>
-                <input type="text" name="speakerName" value='${data.speakername}' required>
+                <input type="text" name="speakerName"  id="name" value='${data.speakername}' required>
             </div>
             <div class="dataa">
                 <label>  Phone</label>
-                <input type="text" name="speakerPhone" value='${data.speakerphoneno}' pattern="[0-9]{3}-[0-9]{8}">
+                <input type="text" name="speakerPhone"  id="phone" value='${data.speakerphoneno}'  pattern="^(\d{10}|\d{11})$" required >
             </div>
             <div class="dataa">
                 <label>    Education</label>
@@ -62,6 +62,15 @@
 
 </div>
 <script>function calAlert() {
+	  if (!document.getElementById("phone").checkValidity()) {
+          alert("Sila masukkan no telefon tanpa (-).");
+          return;
+      }
+	  else if (!document.getElementById("name").checkValidity()) {
+          alert("Sila masukkan nama");
+          return;
+      }
+
     Swal.fire({
         title: 'Kemaskini penceramah',
         text: 'Adakah anda pasti untuk mengemaskini penceramah ini?',

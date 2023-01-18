@@ -10,10 +10,9 @@ import javabean.Imam;
 import static java.lang.System.out;
 
 public class StaffDao {
-	String dbURL = "jdbc:postgresql://ep-winter-moon-258448.ap-southeast-1.aws.neon.tech/neondb";
-    String user = "mukhliskadir";
-    String pass = "NGx9KZVkQ3am";
-    
+	String dbURL = "jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb";
+     String user = "xtahulasung";
+     String pass = "Pczo6RY3EQJh";
     protected Connection getConnection() {
         Connection con = null;
         try {
@@ -95,6 +94,30 @@ public class StaffDao {
         	ps.setString(4,stf.getStaffPassword());
             ps.setBinaryStream(5, stf.getStaffpicture());
         	ps.setInt(6, stf.getId());
+        	
+
+
+      
+            out.println(ps);
+            ps.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateStaff2 (Staff stf) throws SQLException {
+
+        // try-with-resource statement will auto close the connection.
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement
+            		 ("update staff set staffname=?,staffphoneno=?,staffusername=?,staffpass=? where staffid=?"))
+
+        {
+        	ps.setString(1,stf.getStaffName());
+        	ps.setString(2,stf.getStaffPhone());
+        	ps.setString(3,stf.getStaffUsername());
+        	ps.setString(4,stf.getStaffPassword());
+        	ps.setInt(5, stf.getId());
         	
 
 

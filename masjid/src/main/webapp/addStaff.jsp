@@ -10,9 +10,9 @@
 <sql:setDataSource 
 		var		 ="eschedule" 
 		driver   ="org.postgresql.Driver"
-		url		 ="jdbc:postgresql://ec2-3-234-131-8.compute-1.amazonaws.com/d19mjejga32und"
-		user 	 ="ocetdbspxioaak"
-		password ="046d2c84c24f70b0f1b8cf071d97fe00efe0700a42909777604ad0298b5bec3e"
+		url		 ="jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb"
+		user 	 ="xtahulasung"
+		password ="Pczo6RY3EQJh"
 />
      
       <sql:query dataSource="${eschedule}" var="staff">
@@ -39,19 +39,19 @@
    			</div>
             <div class="dataa">
                 <label>   Nama </label>
-                <input type="text" name="staffName" value="" >
+                <input type="text" name="staffName" value="" id="name"required oninvalid="this.setCustomValidity('Sila masukkan nama')" oninput="setCustomValidity('')">
             </div>
             <div class="dataa">
                 <label>No Telefon</label>
-                <input type="text" name="staffPhone" placeholder="012-3456790" pattern="[0-9]{3}-[0-9]{8}">
+                <input type="text" name="staffPhone" id="phone" placeholder="0123456790 tanpa (-)" pattern="^(\d{10}|\d{11})$" required oninvalid="this.setCustomValidity('Sila masukkan no telefon')" oninput="setCustomValidity('')">
             </div>
             <div class="dataa">
                 <label>Nama pengguna</label>
-                <input type="text" name="staffUsername" value="">
+                <input type="text" name="staffUsername" id="username" value="" required oninvalid="this.setCustomValidity('Sila masukkan nama pengguna')" oninput="setCustomValidity('')">
             </div>
               <div class="dataa">
                 <label>Kata Laluan</label>
-                <input type="password" name="staffPassword" value="">
+                <input type="password" name="staffPassword"  id="password"value=""  required oninvalid="this.setCustomValidity('Sila masukkan kata laluan')" oninput="setCustomValidity('')">
             </div>
             <div class="dataa">
                 <label>Jawatan</label>
@@ -75,7 +75,7 @@
             <div id="mybutton" class="button">
                 <button type="cancel" name="action"  value="cancel" formaction="StaffServlet">BATAL</button>
                 <input type="hidden" name="action" value="addStaff">
-                <button type="submit" class="button button1" name="submit" >TAMBAH</button><br><br>
+                <button type="submit" class="button button1" name="submit" onclick="calAlert()">TAMBAH</button><br><br>
             </div>
         </form>
     </div>
@@ -94,7 +94,41 @@
 
 </div>
 </body>
-
+<script>
+function calAlert() {
+    // Check if the name input field is valid
+    if (!document.getElementById("name").checkValidity()) {
+        alert("Sila masukkan name");
+        return;
+    }
+    // Check if the phone number input field is valid
+    else if (!document.getElementById("phone").checkValidity()) {
+        alert("Sila masukkan no telefon tanpa (-)");
+        return;
+    }
+    else if (!document.getElementById("username").checkValidity()) {
+        alert("Sila masukkan name pengguna");
+        return;
+    }
+    else if (!document.getElementById("password").checkValidity()) {
+        alert("Sila masukkan kata laluan");
+        return;
+    }
+    else {
+        // If both input fields are valid, show the confirmation dialog
+        Swal.fire({
+            title: 'Berjaya',
+            text: 'Pengumuman berjaya ditambah!',
+            icon: 'success',
+         
+        }).then((result) => {
+            if (result.value) {
+                // If the user confirms, submit the form
+                document.getElementById("form_id").submit();
+            }
+        });
+    }
+}</script>
 <style type="text/css">
   h3{color: black;}
   #myInput{display: inline-block;width: 500px ;}

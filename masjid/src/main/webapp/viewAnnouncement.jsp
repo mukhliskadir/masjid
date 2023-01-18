@@ -88,7 +88,7 @@
                      <c:if test="${result.announcementdate>=result.currentdate}">
     				  <td >Aktif</td>
 					</c:if>
-					  <c:if test="${result.announcementdate<=result.currentdate}">
+					  <c:if test="${result.announcementdate<result.currentdate}">
     				  <td >Selesai</td>
 					</c:if>
 					

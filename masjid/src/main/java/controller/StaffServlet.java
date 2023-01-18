@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import javax.servlet.http.Part;
 import dao.StaffDao;
+import javabean.Announcement;
 import javabean.Imam;
 import javabean.Staff;
 /**
@@ -27,7 +28,10 @@ import javabean.Staff;
 @MultipartConfig(maxFileSize = 16177215) //
 public class StaffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      
+	
+	private Part filePart;
+
 	 private StaffDao Sd;
 	    public void init() {
 	        Sd = new StaffDao();
@@ -47,9 +51,8 @@ public class StaffServlet extends HttpServlet {
 		   final String JDBC_DRIVER = "org.postgresql.Driver";
 		      final String DB_URL = "jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb";
 		        final String User = "xtahulasung";
-		        final String Password = "Pczo6RY3EQJh";      final String DB_URL = "jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb";
-		        final String User = "xtahulasung";
-		        final String Password = "Pczo6RY3EQJh";    try {
+		        final String Password = "Pczo6RY3EQJh";   
+		        try {
 	            Class.forName(JDBC_DRIVER);
 	            Connection conn = DriverManager.getConnection(DB_URL, User, Password);
 
@@ -176,8 +179,8 @@ public class StaffServlet extends HttpServlet {
 	        	
 	        InputStream inputStream = null;
 
-	        Part filePart = request.getPart("staffPic");
-			if (filePart != null) {
+	        filePart = request.getPart("staffPic");
+			if (filePart.getSize()>0) {
 				// debug messages
 				System.out.println(filePart.getName());
 				System.out.println(filePart.getSize());
@@ -185,7 +188,7 @@ public class StaffServlet extends HttpServlet {
 
 				// obtains input stream of the upload file
 				inputStream = filePart.getInputStream();
-			}
+			
 	        Staff s= new Staff();
 
 	        s.setStaffName(name);
@@ -199,6 +202,24 @@ public class StaffServlet extends HttpServlet {
 	        
 	        Sd.updateStaff(s);
 	        response.sendRedirect("viewStaff.jsp");
+			}
+			else  if(filePart.getSize()==0){
+				
+				// obtains input stream of the upload file
+				
+				 Staff s= new Staff();
+
+			        s.setStaffName(name);
+			        s.setStaffPhone(phone);
+			        s.setStaffUsername(username);
+			        s.setStaffPassword(password);
+			        s.setId(id);
+			        
+			        
+			        
+			        Sd.updateStaff2(s);
+			        response.sendRedirect("viewStaff.jsp");
+			}
 	    }
 	    private void cancel(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException {

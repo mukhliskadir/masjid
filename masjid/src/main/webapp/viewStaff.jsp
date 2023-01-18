@@ -14,12 +14,14 @@
 </head>
 <body>
 
- <sql:setDataSource var="ic" driver="org.postgresql.Driver"
-         url="jdbc:postgresql://ec2-3-234-131-8.compute-1.amazonaws.com/d19mjejga32und"
-         user = "ocetdbspxioaak"
-         password="046d2c84c24f70b0f1b8cf071d97fe00efe0700a42909777604ad0298b5bec3e"/>
+<sql:setDataSource 
+		var		 ="eschedule" 
+		driver   ="org.postgresql.Driver"
+		url		 ="jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb"
+		user 	 ="xtahulasung"
+		password ="Pczo6RY3EQJh"/>
                    
-<sql:query dataSource="${ic}" var="staff">
+<sql:query dataSource="${eschedule}" var="staff">
     SELECT row_number() over (order by staffid) "rank",staffid,staffname,staffphoneno,staffusername,staffpass,staffrole,staffpicture from staff
 </sql:query>
 
@@ -68,11 +70,11 @@
                             <button  class="action"  type="edit" formaction="staffDetails.jsp?id=${result.staffid}">LIHAT</button>
                         </form>
          		<c:if test="${sessionScope.staffrole != 'Pengerusi' }" > 
-                        <form method="post">
-                            <input type="hidden" name="staff" value="${result.staffid}">
-                            <input type="hidden" name="action" value="deleteStaff">
-                            <button  class="action"  type="delete" formaction="StaffServlet"  onclick="return confirm('Yakin untuk buang <c:out value="${result.staffname}"/> ?');">BUANG</button>
-                        </form>
+                       <form method="post" id="form_id"  action="StaffServlet">
+					    	<input type="hidden" name="staff" id="staffIdInput" >
+					   		<input type="hidden" name="action" value="deleteStaff" >
+					    	<button  class="action"  type="button" onclick="callAlert('${result.staffid}');">BUANG</button>
+			     		</form>
                    </c:if>
                     </td>
                 </tr>
@@ -91,6 +93,26 @@
 </div>
 
 </body>
+<script>function callAlert(staffId) {
+    Swal.fire({
+        title: 'Buang profil',
+        text: 'Adakah anda pasti untuk membuang profil ini?',
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText: 'BATAL',
+        confirmButtonText: 'YA',
+        confirmButtonColor: '#d33',
+
+    }).then((result) => {
+        if (result.value) {
+            // If the user confirms, submit the form
+            document.getElementById("staffIdInput").value=staffId;
+            document.getElementById("form_id").submit();
+        }
+    })
+}
+
+</script>
 <style>
     h3{color: black;}
     #myInput{display: inline-block;width: 500px ;}

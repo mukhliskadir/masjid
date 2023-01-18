@@ -45,11 +45,11 @@
 	                        >KEMASKINI
 	                        </button>
 	                    </form>
-	                  <form method="post" id="form_id"  action="SpeakerServlet">
-    <input type="hidden" name="speakers" id="speakerIdInput" >
-    <input type="hidden" name="action" value="deleteSpeaker" id="test">
-    <button  class="action"  type="button" onclick="callAlert('${data.speakerid}');">BUANG</button>
-</form>
+	                    <form method="post" id="form_id"  action="SpeakerServlet">
+					    	<input type="hidden" name="speakers" id="speakerIdInput" >
+					   		<input type="hidden" name="action" value="deleteSpeaker" id="test">
+					    	<button  class="action"  type="button" onclick="callAlert('${data.speakerid}');">BUANG</button>
+			     		</form>
                         
                     </td>
                 </tr>

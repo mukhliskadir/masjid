@@ -38,7 +38,7 @@
 
             <div class="dataa">
                 <label>   Name </label>
-                <input type="text" name="topicName" value='${data.topicname}'' required>
+                <input type="text" name="topicName"  id="topic" value='${data.topicname}'' required>
             </div>
             <div class="dataa">
                 <labe> Tema</labe>
@@ -70,6 +70,14 @@
 </body>
 <script>
 function calAlert() {
+	 if  (!document.getElementById("topic").checkValidity()) {
+	        alert("Sila masukkan tajuk");
+	        return;
+}
+	  else if (!document.getElementById("theme").checkValidity()) {
+	        alert("Sila masukkan tema");
+	        return;
+}
     Swal.fire({
         title: 'Kemaskini topik',
         text: 'Adakah anda pasti untuk mengemaskini topik ini?',

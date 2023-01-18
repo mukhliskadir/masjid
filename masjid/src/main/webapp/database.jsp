@@ -17,7 +17,7 @@
 </sql:query>
 
 <sql:query dataSource="${eschedule}" var="speaker">
-    SELECT row_number() over (order by speakerid)  "rank",speakerid,speakername,speakerphoneno,speakereducation 
+    SELECT row_number() over (order by speakerid desc)  "rank",speakerid,speakername,speakerphoneno,speakereducation 
     FROM speaker
     WHERE speakerid>0
 </sql:query>

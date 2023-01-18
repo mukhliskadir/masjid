@@ -19,9 +19,9 @@
 <body>
 <%
 	Class.forName("org.postgresql.Driver");
-	String dbURL = "jdbc:postgresql://ec2-3-234-131-8.compute-1.amazonaws.com/d19mjejga32und";
-	String user = "ocetdbspxioaak";
-	String pass = "046d2c84c24f70b0f1b8cf071d97fe00efe0700a42909777604ad0298b5bec3e";
+String dbURL = "jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb";
+String user = "xtahulasung";
+String pass = "Pczo6RY3EQJh";
     String id=request.getParameter("id");
     int num=Integer.parseInt(id);
     String sql= "select * from staff left outer join imam using(staffid) where staffid='"+num+"'";

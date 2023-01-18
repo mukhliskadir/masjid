@@ -53,11 +53,11 @@ while(rs.next())
     </div>
     <div class="dataa">
      <label>   Tajuk </label>
-        <input type="text" name="aTitle" value='<%=rs.getString("announcementtitle") %>' >
+        <input type="text" name="aTitle" value='<%=rs.getString("announcementtitle") %>' id="title" required >
     </div>
     <div class="dataa">
     <label>    Tarikh</label>
-        <input type="date" name="aDate" value='<%=rs.getString("announcementdate") %>'>
+        <input type="date" name="aDate" value='<%=rs.getString("announcementdate") %>' id="date" required>
     </div>
     <div class="dataa">
     <label>    Masa</label>
@@ -100,6 +100,17 @@ while(rs.next())
 
 </script>
 <script>function calAlert() {
+	if (!document.getElementById("title").checkValidity()) {
+        alert("Sila masukkan topik");
+        return;
+    }
+    // Check if the phone number input field is valid
+    else if (!document.getElementById("date").checkValidity()) {
+        alert("Sila masukkan tarikh");
+        return;
+    }
+    else {
+
     Swal.fire({
         title: 'Kemaskini pengumuman',
         text: 'Adakah anda pasti untuk mengemaskini pengumuman ini?',
@@ -114,7 +125,7 @@ while(rs.next())
             document.getElementById("form_id").submit();
         }
     })
-}
+}}
 
 </script>
 <style type="text/css">

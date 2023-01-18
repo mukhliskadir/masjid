@@ -19,9 +19,9 @@
 <body>
 <%
 	Class.forName("org.postgresql.Driver");
-	String dbURL = "jdbc:postgresql://ec2-3-234-131-8.compute-1.amazonaws.com/d19mjejga32und";
-	String user = "ocetdbspxioaak";
-	String pass = "046d2c84c24f70b0f1b8cf071d97fe00efe0700a42909777604ad0298b5bec3e";
+	String dbURL = "jdbc:postgresql://ep-red-river-230703.ap-southeast-1.aws.neon.tech/neondb";
+    String user = "xtahulasung";
+    String pass = "Pczo6RY3EQJh";
     String id=request.getParameter("id");
     int num=Integer.parseInt(id);
     String sql= "select * from staff left outer join imam using(staffid) where staffid='"+num+"'";
@@ -38,7 +38,7 @@
     <br>
     <h2>IMAM</h2>
     <div class="staffform">
-        <form class="staff" method="post" enctype="multipart/form-data">
+        <form class="staff" method="post" enctype="multipart/form-data"  action="StaffServlet" id="form_id">
             <input type="hidden" name="id" value='<%=rs.getString("staffid") %>'/>
             
         	<div class="dataa">
@@ -51,7 +51,7 @@
             </div>
             <div class="dataa">
                 <label>No Telefon</label>
-                <input type="text" name="staffPhone" value='<%=rs.getString("staffphoneno") %>'  pattern="[0-9]{3}-[0-9]{8}">
+                <input type="text" name="staffPhone" value='<%=rs.getString("staffphoneno") %>'  pattern="^(\d{10}|\d{11})$">
             </div>
             <div class="dataa">
                 <label>Nama pengguna</label>
@@ -64,9 +64,9 @@
            
             <%} %>
             <div id="mybutton" class="button">
-                <button type="cancel" name="action"  value="cancel" formaction="StaffServlet">BATAL</button>
+                  <button type="cancel" name="action"  value="cancel" formaction="StaffServlet">BATAL</button>
                 <input type="hidden" name="action" value="updateStaff">
-                <button type="submit" formaction="StaffServlet" onclick="return confirm('Yakin untuk simpan ?');">SIMPAN</button>
+                <button type="button" formaction="StaffServlet"onclick="calAlert()">KEMASKINI</button>
                 <br><br>
             </div>
         </form>
@@ -87,6 +87,24 @@ var loadFile = function(event) {
 	  var image = document.getElementById('output');
 	  image.src = URL.createObjectURL(event.target.files[0]);
 	};
+</script>
+<script>function calAlert() {
+    Swal.fire({
+        title: 'Kemaskini profil',
+        text: 'Adakah anda pasti untuk mengemaskini profil ini?',
+        icon: 'question',
+        showCancelButton: true,
+        cancelButtonText: 'BATAL',
+        confirmButtonText: 'OK'
+
+    }).then((result) => {
+        if (result.value) {
+            // If the user confirms, submit the form
+            document.getElementById("form_id").submit();
+        }
+    })
+}
+
 </script>
 <style type="text/css">
     h3{color: black;}
