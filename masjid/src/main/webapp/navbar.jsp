@@ -30,7 +30,7 @@
 <!-------------------------------SIDEBAR------------------------------------------------->
 
 <div class="sidebar">
-    <div class="img"><img src="${pageContext.servletContext.contextPath }/StaffServlet?id=<%=session.getAttribute(" staffid ")%>"style="width:120px;height: 120px; margin-top: 50px;margin-left: 40px;border-radius: 50%;border: 2px solid black;">
+    <div class="img"><img src="${pageContext.servletContext.contextPath }/StaffServlet?id=<%=session.getAttribute("staffid") %>" style="width:120px;height: 120px; margin-top: 50px;margin-left: 40px;border-radius: 50%;border: 2px solid black;">
     </div>
         <div class="profname" style="margin-left: 10px;margin-top: -35px;font-weight: bold;font-size: 20px;margin-bottom: 20px;margin-right: 30px;text-align:center;">
             <%=name %>

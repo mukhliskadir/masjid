@@ -47,19 +47,19 @@
    			</div>
             <div class="dataa">
                 <label>   Nama </label>
-                <input type="text" name="staffName" value='<%=rs.getString("staffname") %>' >
+                <input type="text" name="staffName" value='<%=rs.getString("staffname") %>' id="name" required>
             </div>
             <div class="dataa">
                 <label>No Telefon</label>
-                <input type="text" name="staffPhone" value='<%=rs.getString("staffphoneno") %>'  pattern="^(\d{10}|\d{11})$">
+                <input type="text" name="staffPhone" value='<%=rs.getString("staffphoneno") %>' id="phone"  required pattern="^(\d{10}|\d{11})$">
             </div>
             <div class="dataa">
                 <label>Nama pengguna</label>
-                <input type="text" name="staffUsername" value='<%=rs.getString("staffusername") %>'>
+                <input type="text" name="staffUsername" value='<%=rs.getString("staffusername") %>'  required id="username" >
             </div>
               <div class="dataa">
                 <label>Kata Laluan</label>
-                <input type="password" name="staffPassword" value='<%=rs.getString("staffpass") %>'>
+                <input type="password" name="staffPassword" value='<%=rs.getString("staffpass") %>'  id="password" required>
             </div>
            
             <%} %>
@@ -89,7 +89,25 @@ var loadFile = function(event) {
 	};
 </script>
 <script>function calAlert() {
-    Swal.fire({
+	 if (!document.getElementById("name").checkValidity()) {
+	        alert("Sila masukkan name");
+	        return;
+	    }
+	    // Check if the phone number input field is valid
+	    else if (!document.getElementById("phone").checkValidity()) {
+	        alert("Sila masukkan no telefon tanpa (-)");
+	        return;
+	    }
+	    else if (!document.getElementById("username").checkValidity()) {
+	        alert("Sila masukkan name pengguna");
+	        return;
+	    }
+	    else if (!document.getElementById("password").checkValidity() || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(document.getElementById("password").value)) {
+	        alert("Sila masukkan kata laluan dengan sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan minimum 6 aksara");
+	        return;
+	    }
+	    else {
+	Swal.fire({
         title: 'Kemaskini profil',
         text: 'Adakah anda pasti untuk mengemaskini profil ini?',
         icon: 'question',
@@ -103,6 +121,7 @@ var loadFile = function(event) {
             document.getElementById("form_id").submit();
         }
     })
+}
 }
 
 </script>

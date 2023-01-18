@@ -50,7 +50,7 @@
             <input type="hidden" name="id" value='<%=rs.getString("scheduleid") %>'/>
             <div class="dataa">
                 <label>   Tarikh </label>
-                <input type="date" name="scDate"  value='<%=rs.getString("scheduledate") %>' >
+                <input type="date" name="scDate"  value='<%=rs.getString("scheduledate") %>' id="date" required >
             </div>
             <div class="dataa">
                 <label>  Masa</label>
@@ -86,7 +86,14 @@
 </div>
 
 </body>
-<script>function calAlert() {
+<script>function calAlert() 
+	{
+		  if (!document.getElementById("date").checkValidity()) {
+	          alert("Sila masukkan tarikh");
+	          return;
+	      }
+		 
+	     
     Swal.fire({
         title: 'Kemaskini jadual',
         text: 'Adakah anda pasti untuk mengemaskini jadual ini?',

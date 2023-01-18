@@ -29,7 +29,7 @@
             </div>
             <div class="dataa">
                 <label>    Pendidikan</label>
-                <input type="text" name="speakerEdu" value=""   oninvalid="this.setCustomValidity('Sila masukkan kelulusan penceramaha')" oninput="setCustomValidity('')">
+                <input type="text" name="speakerEdu" value="" id="education" required  oninvalid="this.setCustomValidity('Sila masukkan kelulusan penceramaha')" oninput="setCustomValidity('')">
             </div> 
             
             <!--SUBMIT  BUTTON -->
@@ -54,12 +54,17 @@
             alert("Sila masukkan no telefon tanpa (-).");
             return;
         }
+        else if (!document.getElementById("education").checkValidity()) {
+            alert("Sila masukkan latarbelakang pendidikan");
+            return;
+        }
         else {
             // If both input fields are valid, show the confirmation dialog
             Swal.fire({
                 title: 'Berjaya',
                 text: 'Penceramah berjaya ditambah!',
                 icon: 'success',
+                showConfirmButton: false
              
             }).then((result) => {
                 if (result.value) {

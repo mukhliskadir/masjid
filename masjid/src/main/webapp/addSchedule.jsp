@@ -40,8 +40,8 @@
 <!------------------------------------SEARCH FORM--------------------------------------------->
 
          <form method="post" action="viewSchedule.jsp">
-		<input type="date" name="fDate"> HINGGA
-		<input type="date" name="tDate">
+		<input type="date" name="fDate" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"> HINGGA
+		<input type="date" name="tDate" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')">
 
             <button  class="action"  type="submit" >CARI</button>
     </form>

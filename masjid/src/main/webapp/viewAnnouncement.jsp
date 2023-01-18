@@ -37,12 +37,11 @@
          <h2>PENGUMUMAN</h2>
          
          <select name="topicTheme" id="myInput" >
-    <option value="Aktif" 		 >Aktif</option>
-    <option value="Selesai"	 >Selesai		</option>
- 
-</select>
-
-<input type="button" class="tajuk" onclick="cariPengumuman()" value="Isih" >
+            <option value="" 		 >Semua</option>         
+		    <option value="Aktif" 		 >Aktif</option>
+		    <option value="Selesai"	 >Selesai		</option>
+			</select>
+		<input type="button" class="tajuk" onclick="cariPengumuman()" value="CARI" >
     
          <div id="mybutton" class="button">
             <button class="add" type="add" value="add" onclick="location.href='addAnnouncement.jsp'">TAMBAH</button>
@@ -59,7 +58,7 @@
                   <th onclick="sortTable(2)" style="width: 460px;">Deskripsi</th>
                   <th onclick="sortTable(4)" style="width: 250px;">Tarikh & Masa</th>
                   <th onclick="sortTable(4)" style="width: 250px;">Status</th>
-                  <th style="width: 100px;">Action</th>
+                  <th style="width: 100px;">Tindakan</th>
                </tr>
                
                <c:forEach var="result" items="${oc.rows}">

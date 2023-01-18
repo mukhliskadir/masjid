@@ -67,7 +67,7 @@ function calAlert() {
       title: 'Berjaya',
       text: 'Tajuk telah ditambah!',
       icon: 'success',
-      
+      showConfirmButton: false
 
   }).then((result) => {
       if (result.value) {

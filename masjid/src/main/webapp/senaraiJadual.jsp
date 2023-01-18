@@ -47,9 +47,11 @@ using(topicid)
   		<div id="mybutton" class="button">
   			<button class="add" type="add" value="add" onclick="location.href='Jadual.jsp'">TAMBAH</button>
   		</div>
-
+<form>
   <input type="date" id="myInput" placeholder="Pilih Tarikh"   onfocus="(this.type='date')" onblur="(this.type='text')">   
-  <input type="submit" onclick="cariJadual()" >    
+              <button  class="action"  type="button"  onclick="cariJadual()">CARI</button>
+              </form>
+      
   <div style="overflow-x:auto;">
   <table style="text-align: center;" id="listJadual">
 

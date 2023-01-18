@@ -51,7 +51,7 @@
             </div>
               <div class="dataa">
                 <label>Kata Laluan</label>
-                <input type="password" name="staffPassword"  id="password"value=""  required oninvalid="this.setCustomValidity('Sila masukkan kata laluan')" oninput="setCustomValidity('')">
+  				<input type="password" name="staffPassword"id="password" oninput="validate()" required>
             </div>
             <div class="dataa">
                 <label>Jawatan</label>
@@ -110,8 +110,8 @@ function calAlert() {
         alert("Sila masukkan name pengguna");
         return;
     }
-    else if (!document.getElementById("password").checkValidity()) {
-        alert("Sila masukkan kata laluan");
+    else if (!document.getElementById("password").checkValidity() || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(document.getElementById("password").value)) {
+        alert("Sila masukkan kata laluan dengan sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan minimum 6 aksara");
         return;
     }
     else {
@@ -128,7 +128,8 @@ function calAlert() {
             }
         });
     }
-}</script>
+}
+</script>
 <style type="text/css">
   h3{color: black;}
   #myInput{display: inline-block;width: 500px ;}

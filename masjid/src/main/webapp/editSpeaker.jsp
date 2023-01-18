@@ -45,7 +45,7 @@
             </div>
             <div class="dataa">
                 <label>    Education</label>
-                <input type="text" name="speakerEdu" value='${data.speakereducation}'>
+                <input type="text" name="speakerEdu" value='${data.speakereducation}' id="education" required>
             </div>
 
              <div id="mybutton" class="button">
@@ -68,6 +68,10 @@
       }
 	  else if (!document.getElementById("name").checkValidity()) {
           alert("Sila masukkan nama");
+          return;
+      }
+	  else if (!document.getElementById("education").checkValidity()) {
+          alert("Sila masukkan latarbelakang pendidikan");
           return;
       }
 

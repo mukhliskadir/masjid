@@ -74,6 +74,7 @@ function calAlert() {
             title: 'Berjaya',
             text: 'Pengumuman berjaya ditambah!',
             icon: 'success',
+            showConfirmButton: false
          
         }).then((result) => {
             if (result.value) {
