@@ -90,7 +90,7 @@ var loadFile = function(event) {
 </script>
 <script>function calAlert() {
 	 if (!document.getElementById("name").checkValidity()) {
-	        alert("Sila masukkan name");
+	        alert("Sila masukkan nama");
 	        return;
 	    }
 	    // Check if the phone number input field is valid
