@@ -63,7 +63,7 @@ while(rs.next())
     <label>    Masa</label>
         <input type="time" name="aTime" value='<%=rs.getString("announcementtime") %>'>
   	</div><div class="dataa">
-      <label>  Maklumat</label>
+      <label>  Diskripsi</label>
         <textarea type="text" name="aDesc" style="height:200px;" > <%=rs.getString("announcementdesc") %></textarea>
     </div>
         <div class="dataa">
