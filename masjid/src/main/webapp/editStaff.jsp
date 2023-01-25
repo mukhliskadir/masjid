@@ -64,7 +64,7 @@
            
             <%} %>
             <div id="mybutton" class="button">
-                  <button type="cancel" name="action"  value="cancel" formaction="StaffServlet">BATAL</button>
+                  <button type="cancel" name="action"  value="cancel" onclick="history.back()">BATAL</button>
                 <input type="hidden" name="action" value="updateStaff">
                 <button type="button" formaction="StaffServlet"onclick="calAlert()">KEMASKINI</button>
                 <br><br>
