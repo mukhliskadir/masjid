@@ -25,7 +25,7 @@
 				<input type="text" name="aTitle" value="" id="title"required> </div>
 			<div class="dataa">
 				<label> Tarikh</label>
-				<input type="date" name="aDate" value="" id="date"required> </div>
+				<input type="date" name="aDate" value="" id="date"  min="2020-01-01" required> </div>
 			<div class="dataa">
 				<label> Masa</label>
 			<input type="time" name="aTime" value=""> </div>
@@ -83,6 +83,19 @@ function calAlert() {
             }
         });
     }
-}</script>
+}
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+if(dd<10){
+    dd='0'+dd
+} 
+if(mm<10){
+    mm='0'+mm
+} 
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("date").setAttribute("min", today);</script>
 
 </html>

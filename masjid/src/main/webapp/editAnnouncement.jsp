@@ -57,7 +57,7 @@ while(rs.next())
     </div>
     <div class="dataa">
     <label>    Tarikh</label>
-        <input type="date" name="aDate" value='<%=rs.getString("announcementdate") %>' id="date" required>
+        <input type="date" name="aDate" value='<%=rs.getString("announcementdate") %>' id="date" min="2020-01-01" >
     </div>
     <div class="dataa">
     <label>    Masa</label>
@@ -126,7 +126,18 @@ while(rs.next())
         }
     })
 }}
-
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+if(dd<10){
+    dd='0'+dd
+} 
+if(mm<10){
+    mm='0'+mm
+} 
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("date").setAttribute("min", today);
 </script>
 <style type="text/css">
   h3{color: black;}

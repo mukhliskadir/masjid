@@ -57,7 +57,7 @@
                   <tr>
                      <td rowspan="2" style="width: 10%;text-align:center;">
                      	AHAD<br>
-                        <input type="date" name="scDate" value="" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                        <input type="date" name="scDate" value="" required id="date"  min="2020-01-01"  oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker">
@@ -98,7 +98,7 @@
                   </tr>
                   
                    <td rowspan="2" style="width: 10%;text-align:center;">
-                    	ISNIN<br> <input type="date" name="scDate2" value="" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                    	ISNIN<br> <input type="date" name="scDate2" value="" required id="date"  min="2020-01-01"  oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker2">
@@ -140,7 +140,7 @@
                   
                    <td rowspan="2" style="width: 10%;text-align:center;">
                      	SELASA<br>
-                        <input type="date" name="scDate3" value="" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                        <input type="date" name="scDate3" value="" required id="date"  min="2020-01-01"  oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker3">
@@ -182,7 +182,7 @@
                   
                    <td rowspan="2" style="width: 10%;text-align:center;">
                      	RABU<br>
-                        <input type="date" name="scDate4" value="" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                        <input type="date" name="scDate4" value="" required  id="date"  min="2020-01-01"  oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker4">
@@ -224,7 +224,7 @@
                   
                    <td rowspan="2" style="width: 10%;text-align:center;">
                      	KHAMIS<br>
-                        <input type="date" name="scDate5" value="" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                        <input type="date" name="scDate5" value="" required id="date"  min="2020-01-01"  oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker5">
@@ -266,7 +266,7 @@
                   
                    <td rowspan="2" style="width: 10%;text-align:center;">
                      	JUMAAT<br>
-                        <input type="date" name="scDate6" value="" required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                        <input type="date" name="scDate6" value="" required  id="date"  min="2020-01-01"  oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker6">
@@ -308,7 +308,7 @@
                   
                    <td rowspan="2" style="width: 10%;text-align:center;">
                      	SABTU<br>
-                        <input type="date" name="scDate7" value="" required  required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
+                        <input type="date" name="scDate7" value="" required id="date"  min="2020-01-01"  required oninvalid="this.setCustomValidity('Sila masukkan tarikh')" oninput="setCustomValidity('')"/>
                      </td>
                      <td>
                         <select name="scSpeaker7">
@@ -385,5 +385,17 @@
 	    for(let i = 0; i < elements.length; i++) {
 	        elements[i].required = false;
 	    }
-	}</script>
+	}
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	    dd='0'+dd
+	} 
+	if(mm<10){
+	    mm='0'+mm
+	} 
+	today = yyyy+'-'+mm+'-'+dd;
+	document.getElementById("date").setAttribute("min", today);</script>
 </html>

@@ -51,7 +51,7 @@
             </div>
               <div class="dataa">
                 <label>Kata Laluan</label>
-  				<input type="password" name="staffPassword"id="password" oninput="validate()" required>
+  				<input type="password" name="staffPassword"id="password" oninput="validate()"  pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
             </div>
             <div class="dataa">
                 <label>Jawatan</label>
@@ -110,9 +110,13 @@ function calAlert() {
         alert("Sila masukkan name pengguna");
         return;
     }
-    else if (!document.getElementById("password").checkValidity() || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(document.getElementById("password").value)) {
+    else if (!document.getElementById("password").checkValidity()) {
         alert("Sila masukkan kata laluan dengan sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan minimum 6 aksara");
         return;
+    }
+    else if( !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(document.getElementById("password").value)){
+    	 alert("Sila masukkan kata laluan dengan sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan minimum 6 aksara");
+         return;
     }
     else {
         // If both input fields are valid, show the confirmation dialog
