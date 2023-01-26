@@ -78,7 +78,7 @@ where scheduledate <=
 </sql:query>
 
  <sql:query dataSource="${MLMS}" var="od">
-      select  row_number() over (order by announcementdate)  "rank",announcementpicture,announcementid,announcementtitle,announcementdesc,announcementdate,announcementtime from announcement where announcementdate> current_date
+      select  row_number() over (order by announcementdate)  "rank",announcementpicture,announcementid,announcementtitle,announcementdesc,announcementdate,announcementtime from announcement where announcementdate>= current_date
  	
  </sql:query>
  
